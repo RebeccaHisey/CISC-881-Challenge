@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib as plt
 import mahotas as mh
 
 def thresholdCube(outputArray):

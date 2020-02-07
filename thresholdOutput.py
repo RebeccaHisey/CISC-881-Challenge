@@ -26,5 +26,6 @@ def findCentroidNodule(labeledSeg):
     for i in range(labeledSeg.shape[2]):
         nNods = np.unique(labeledSeg[i])
         for j in range(len(nNods)):
-            labeledSeg[i][labeledSeg[i] == j] = 0
+            if j != centroidSeg:
+                labeledSeg[i][labeledSeg[i] == j] = 0
     return labeledSeg

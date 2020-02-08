@@ -13,6 +13,7 @@ from segmentationVolume import segVol
 from utils import IoU
 from hausdorffDistance import hausdorff_dist
 from thresholdOutput import thresholdCube
+np.set_printoptions(threshold=1200, suppress=True)
  
 #Import validation output
 data = []
@@ -67,8 +68,6 @@ for i in range(len(data)):
 #    vol_calc.append(float(segVol(image_calc[start:end], seg_calc[start:end])))
 #    vol_real.append(float(segVol(image_real, seg_real)))
 #    haus_dist.append(hausdorff_dist(seg_calc_arr[start:end], seg_real_arr[start:end], image_calc[start:end], image_real[start:end]))
-
-np.set_printoptions(threshold=1200, suppress=True)
 
 #Final Performance Calculations (Done by normalizing each metric by maximum case)
 mean_j = 1 - ((np.mean(j_index/np.max(j_index))))

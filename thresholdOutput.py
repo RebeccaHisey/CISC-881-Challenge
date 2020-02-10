@@ -32,7 +32,7 @@ def labelSegmentation(binaryImg):
                          [[0, 1, 0],
                           [1, 1, 1],
                           [0, 1, 0]]], dtype='uint8')
-    labeled, nSegs = label(binaryImg, structure=str_3D)
+    labeled, nSegs = label(binaryImg, structure = struct3D)
     return labeled
 
 

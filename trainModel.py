@@ -4,7 +4,7 @@ from keras import optimizers
 from keras.utils import to_categorical,Sequence
 from keras.models import model_from_json
 
-from models import unet3D
+from models import unet3D,IoU_loss,IoU
 
 import SimpleITK as sitk
 import os
@@ -32,7 +32,8 @@ def trainModel(unetModel,dataFolder):
     sgd = optimizers.SGD()
     (images, segmentations) = loadSamples(dataFolder)
     datasetSequence = LNDbSequence(images,segmentations,batchSize=10)
-    unetModel.compile(optimizer=sgd, loss='mean_squared_error')
+#    unetModel.compile(optimizer=sgd, loss='mean_squared_error')
+    unetModel.compile(optimizer=sgd, loss=IoU_loss, metrics=[IoU])
     unetModel.fit(x=datasetSequence.inputs,y=datasetSequence.targets,batch_size=10)
     return unetModel
 

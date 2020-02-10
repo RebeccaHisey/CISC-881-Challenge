@@ -51,3 +51,21 @@ def findCentroidNodule(labeledSeg):
             if j != centroidSeg:
                 labeledSeg[i][labeledSeg[i] == j] = 0  # If nodule does not belong to centroid nodule, delete it
     return labeledSeg
+
+def findLargestNodule(labeledSeg):
+    """
+    Author: Sindhura Thirumal
+    Takes in the labeled array from labelSegmentation and finds the largest nodule segmentation.
+    Deletes all other nodules within cube. Output is the resulting binary image,
+    only containing the largest nodule.
+    """
+    labels, counts = np.unique(labeledSeg, return_counts=True)
+    labelCounts = dict(zip(labels, counts))
+    del labelCounts[0]
+    largestNod = max(labelCounts, key = labelCounts.get)
+    for i in range(labeledSeg.shape[2]):
+        nods = np.unique(labeledSeg[i])  # Get segmentation labels from slice
+        for j in nods:
+            if j != largestNod:
+                labeledSeg[i][labeledSeg[i] == j] = 0  # If nodule does not belong to centroid nodule, delete it
+    return labeledSeg

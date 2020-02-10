@@ -1,5 +1,6 @@
 import numpy as np
 import mahotas as mh
+from scipy.ndimage.measurements import label
 
 
 def thresholdCube(outputArray):

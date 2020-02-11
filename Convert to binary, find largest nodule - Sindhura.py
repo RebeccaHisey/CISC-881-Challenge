@@ -67,5 +67,5 @@ def findLargestNodule(labeledSeg):
         nods = np.unique(labeledSeg[i])  # Get segmentation labels from slice
         for j in nods:
             if j != largestNod:
-                labeledSeg[i][labeledSeg[i] == j] = 0  # If nodule does not belong to centroid nodule, delete it
+                labeledSeg[i][labeledSeg[i] == j] = 0  # If nodule does not belong to largest nodule, delete it
     return labeledSeg

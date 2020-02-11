@@ -72,6 +72,7 @@ for t in range(fold):
             seg_real = sitk.GetImageFromArray(seg_real_arr)
     
             # Volume, Jaccard index and Hausdorff Distance Calculation
+            #Remove reference volumes under 2, as per the challenge instructions
             if float(segVol(image_real, seg_real)) <= 2 or float(segVol(image_real, seg_real)) == 0:
                 group_size = group_size -1
     

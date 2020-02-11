@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 dirname = Path.cwd()
 from segmentationVolume import segVol
-from utils import IoU
+from utils import IoU #utils script used from iW-Net, by github user gmaresta
 from hausdorffDistance import hausdorff_dist
 from thresholdOutput import thresholdCube, labelSegmentation, findLargestNodule
 

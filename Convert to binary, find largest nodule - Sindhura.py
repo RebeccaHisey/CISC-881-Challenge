@@ -69,3 +69,12 @@ def findLargestNodule(labeledSeg):
             if j != largestNod:
                 labeledSeg[i][labeledSeg[i] == j] = 0  # If nodule does not belong to largest nodule, delete it
     return labeledSeg
+
+def padding(labeledSeg):
+    """
+    Author: Sindhura Thirumal
+    Takes in largest nodule segmentation from findLargestNodule and pads the cube to size 80x80x80. Function assumes
+    input is a 64x64x64 cube, output is an 80x80x80 cube.
+    """
+    padded = np.pad(labeledSeg, 8, "constant", constant_values = 0)
+    return padded
